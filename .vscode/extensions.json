@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "gruntfuggly.todo-tree"
+  ]
+}

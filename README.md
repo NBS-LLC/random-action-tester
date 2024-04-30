@@ -12,6 +12,12 @@
 1. pipenv install
 1. pipenv shell
 
-## VSCode
+## Visual Studio Code
 
 - Install the workspace recommendations
+
+## Usage
+
+```bash
+> python main.py
+```

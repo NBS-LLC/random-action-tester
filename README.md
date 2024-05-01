@@ -19,5 +19,6 @@
 ## Usage
 
 ```bash
-> python main.py
+> ./start.sh # Starts the app under test, keep the process running
+> python main.py # Execute in a new shell
 ```

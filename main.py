@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome()
-driver.get("https://zxcodes.github.io/Calculator")
+driver.get("http://127.0.0.1:8000/")
 print(driver.title)
 
 buttons = driver.find_elements(By.XPATH, '//input[@type="button"]')

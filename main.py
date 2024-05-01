@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-def print_all_elements(driver: webdriver):
+def print_all_elements(driver: webdriver.Remote):
     for element in driver.find_elements(By.XPATH, "//*"):
         print(f"name: {element.accessible_name}")
         print(f"text: {element.text}")

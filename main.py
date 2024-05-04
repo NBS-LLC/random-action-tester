@@ -74,6 +74,7 @@ def get_random_workflow(elements: list[WebElement], step_count: int, seed=1):
 
 WORKFLOW_COUNT = 3
 STEP_COUNT = 10
+END_GOAL = "Clicking: ="
 
 
 driver = webdriver.Chrome()
@@ -81,6 +82,7 @@ driver.get("http://127.0.0.1:8000/")
 print(f"App Under Test: {driver.title}")
 print(f"Workflow Count: {WORKFLOW_COUNT}")
 print(f"Step Count: {STEP_COUNT}")
+print(f"End Goal: {END_GOAL}")
 print()
 
 
@@ -97,8 +99,13 @@ for _ in range(WORKFLOW_COUNT):
     print()
 
     for element in workflow:
-        print(f"\tClicking: {element.accessible_name}")
+        action = f"Clicking: {element.accessible_name}"
+        print("\t" + action)
         element.click()
+
+        if action == END_GOAL:
+            print("\tEnd Goal Reached")
+            break
     print()
 
     after = get_all_elements(driver)

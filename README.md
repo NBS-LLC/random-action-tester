@@ -23,7 +23,9 @@
 > python main.py # Execute in a new shell
 ```
 
-Executes a `WORKFLOW_COUNT` number of workflows, using `STEP_COUNT` number of elements per workflow.
+Executes a `WORKFLOW_COUNT` number of workflows, using `STEP_COUNT` number of steps per workflow.
+
+A workflow ends immediately if the `END_GOAL` step is encountered.
 
 Results are sent to standard out in the following format (example workflow run):
 
@@ -31,21 +33,22 @@ Results are sent to standard out in the following format (example workflow run):
 App Under Test: Calculator
 Workflow Count: 1
 Step Count: 10
+End Goal: Clicking: =
 
-Workflow Seed: 1714847839
+Workflow Seed: 1714853697
         Element Count Before Workflow Run: 46
 
+        Clicking: 0
+        Clicking: C
+        Clicking: 7
+        Clicking: C
+        Clicking: .
+        Clicking: 1
+        Clicking: .
+        Clicking: 5
         Clicking: =
-        Clicking: x
-        Clicking: /
-        Clicking: /
-        Clicking: 4
-        Clicking: +
-        Clicking: =
-        Clicking: 4
-        Clicking: -
-        Clicking: 4
+        End Goal Reached
 
         Element Count After Workflow Run: 46
-        Value of root['(Result)/html[1]/body[1]/div[1]/div[1]/div[2]/input[1]'].value changed from "" to "*//4+4-4".
+        Value of root['(Result)/html[1]/body[1]/div[1]/div[1]/div[2]/input[1]'].value changed from "" to ".1.5".
 ```

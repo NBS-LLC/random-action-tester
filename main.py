@@ -1,4 +1,5 @@
 import random
+import time
 from textwrap import dedent
 
 from deepdiff import DeepDiff
@@ -66,12 +67,9 @@ def print_elements(elements: list[Element]):
         print()
 
 
-def generate_random_workflows(
-    elements: list[WebElement], workflow_count: int, step_count: int, seed=1
-):
-    for index in range(workflow_count):
-        random.seed(seed + index)
-        yield [random.choice(elements) for _ in range(step_count)]
+def get_random_workflow(elements: list[WebElement], step_count: int, seed=1):
+    random.seed(seed)
+    return [random.choice(elements) for _ in range(step_count)]
 
 
 driver = webdriver.Chrome()
@@ -79,17 +77,17 @@ driver.get("http://127.0.0.1:8000/")
 print(f"App Under Test: {driver.title}")
 print()
 
-buttons = driver.find_elements(By.XPATH, '//input[@type="button"]')
-workflow_generator = generate_random_workflows(buttons, 100, 10)
 
 for _ in range(3):
-    # TODO: restart app to maintain a clean state between workflow runs
+    seed = int(time.time())
 
-    workflow = next(workflow_generator)
-    print(f"Workflow ID: {hash(str(workflow))}")
+    driver.get("http://127.0.0.1:8000/") # Reset to a clean app state
+    buttons = driver.find_elements(By.XPATH, '//input[@type="button"]')
+    workflow = get_random_workflow(buttons, 10, seed)
+    print(f"Workflow Seed: {seed}")
 
     before = get_all_elements(driver)
-    print(f"\tElement count: {len(before)}")
+    print(f"\tElement Count: {len(before)}")
     print()
 
     for element in workflow:
@@ -98,7 +96,7 @@ for _ in range(3):
     print()
 
     after = get_all_elements(driver)
-    print(f"\tElement count: {len(after)}")
+    print(f"\tElement Count: {len(after)}")
 
     print("\t" + DeepDiff(before, after).pretty())
     print()

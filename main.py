@@ -72,18 +72,22 @@ def get_random_workflow(elements: list[WebElement], step_count: int, seed=1):
     return [random.choice(elements) for _ in range(step_count)]
 
 
+WORKFLOW_COUNT = 3
+STEP_COUNT = 10
+
+
 driver = webdriver.Chrome()
 driver.get("http://127.0.0.1:8000/")
 print(f"App Under Test: {driver.title}")
 print()
 
 
-for _ in range(3):
+for _ in range(WORKFLOW_COUNT):
     seed = int(time.time())
 
-    driver.get("http://127.0.0.1:8000/") # Reset to a clean app state
+    driver.get("http://127.0.0.1:8000/")  # Reset to a clean app state
     buttons = driver.find_elements(By.XPATH, '//input[@type="button"]')
-    workflow = get_random_workflow(buttons, 10, seed)
+    workflow = get_random_workflow(buttons, STEP_COUNT, seed)
     print(f"Workflow Seed: {seed}")
 
     before = get_all_elements(driver)

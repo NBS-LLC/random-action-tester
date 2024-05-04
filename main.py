@@ -19,7 +19,7 @@ class Element:
 
 
 def get_all_elements(driver: webdriver.Remote):
-    all_elements = []
+    all_elements: list[Element] = []
     for element in driver.find_elements(By.XPATH, "//*"):
         all_elements.append(
             Element(

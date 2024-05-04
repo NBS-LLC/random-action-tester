@@ -7,6 +7,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 class Element:
+    # TODO: might need to include computed values (css, etc)
     def __init__(self, name: str, text: str, value: str):
         self.name = name
         self.text = text

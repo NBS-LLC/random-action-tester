@@ -99,11 +99,11 @@ for _ in range(WORKFLOW_COUNT):
     print()
 
     for element in workflow:
-        action = f"Clicking: {element.accessible_name}"
-        print("\t" + action)
+        step = f"Clicking: {element.accessible_name}"
+        print("\t" + step)
         element.click()
 
-        if action == END_GOAL:
+        if step == END_GOAL:
             print("\tEnd Goal Reached")
             break
     print()

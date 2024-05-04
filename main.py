@@ -1,5 +1,6 @@
 from textwrap import dedent
 
+from deepdiff import DeepDiff
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -38,9 +39,10 @@ def print_elements(elements: list[Element]):
 driver = webdriver.Chrome()
 driver.get("http://127.0.0.1:8000/")
 print(f"App Under Test: {driver.title}")
-print()
 
-print_elements(get_all_elements(driver))  # before
+before = get_all_elements(driver)
+print(f"element count: {len(before)}")
+print()
 
 buttons = driver.find_elements(By.XPATH, '//input[@type="button"]')
 for button in buttons:
@@ -48,8 +50,9 @@ for button in buttons:
     button.click()
 print()
 
-print_elements(get_all_elements(driver))  # after
+after = get_all_elements(driver)
+print(f"element count: {len(after)}")
 
-# TODO: diff the before and after, display only the differences
+print(DeepDiff(before, after).pretty())
 
 driver.quit()

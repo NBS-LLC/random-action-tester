@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 selenium = "==4.20.0"
+deepdiff = "==7.0.1"
 
 [dev-packages]
 

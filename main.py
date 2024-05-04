@@ -93,7 +93,7 @@ for _ in range(WORKFLOW_COUNT):
     print(f"Workflow Seed: {seed}")
 
     before = get_all_elements(driver)
-    print(f"\tElement Count: {len(before)}")
+    print(f"\tElement Count Before Workflow Run: {len(before)}")
     print()
 
     for element in workflow:
@@ -102,7 +102,7 @@ for _ in range(WORKFLOW_COUNT):
     print()
 
     after = get_all_elements(driver)
-    print(f"\tElement Count: {len(after)}")
+    print(f"\tElement Count After Workflow Run: {len(after)}")
 
     print("\t" + DeepDiff(before, after).pretty())
     print()

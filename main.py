@@ -79,6 +79,8 @@ STEP_COUNT = 10
 driver = webdriver.Chrome()
 driver.get("http://127.0.0.1:8000/")
 print(f"App Under Test: {driver.title}")
+print(f"Workflow Count: {WORKFLOW_COUNT}")
+print(f"Step Count: {STEP_COUNT}")
 print()
 
 

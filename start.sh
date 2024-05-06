@@ -10,4 +10,4 @@
 rm -rf dist/
 git clone git@github.com:NBS-LLC/js-calculator.git dist/
 
-python -m http.server --bind 127.0.0.1 -d dist/
+python -m http.server --bind 127.0.0.1 -d dist/ 8080

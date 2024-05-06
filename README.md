@@ -9,8 +9,8 @@
 
 ## Installation
 
-1. pipenv install
 1. pipenv shell
+1. pipenv install
 
 ## Visual Studio Code
 
@@ -19,7 +19,7 @@
 ## Usage
 
 ```bash
-> ./start.sh # Starts the app under test, keep the process running
+> ./start.sh # Starts the app under test, keeps the process running
 > python main.py # Execute in a new shell
 ```
 

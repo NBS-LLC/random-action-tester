@@ -78,7 +78,7 @@ END_GOAL = "Clicking: ="
 
 
 driver = webdriver.Chrome()
-driver.get("http://127.0.0.1:8000/")
+driver.get("http://127.0.0.1:8080/")
 print(f"App Under Test: {driver.title}")
 print(f"Workflow Count: {WORKFLOW_COUNT}")
 print(f"Step Count: {STEP_COUNT}")
@@ -89,7 +89,7 @@ print()
 for _ in range(WORKFLOW_COUNT):
     seed = int(time.time())
 
-    driver.get("http://127.0.0.1:8000/")  # Reset to a clean app state
+    driver.get("http://127.0.0.1:8080/")  # Reset to a clean app state
     buttons = driver.find_elements(By.XPATH, '//input[@type="button"]')
     workflow = get_random_workflow(buttons, STEP_COUNT, seed)
     print(f"Workflow Seed: {seed}")
